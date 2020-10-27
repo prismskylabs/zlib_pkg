@@ -1,0 +1,17 @@
+dist: bionic
+sudo: required
+language: minimal
+env:
+  - PSL_TRAVIS_CI=1
+  - PKG_PLATFORM=linux-amd64
+  - PKG_PLATFORM=linux-armv7hf
+  - PKG_PLATFORM=linux-aarch64
+
+install:
+  - ./src/scripts/provision.sh
+
+before_script:
+  - touch before-script
+script:
+  - ./build.sh
+  - ./upload.sh

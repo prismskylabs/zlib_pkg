@@ -42,11 +42,16 @@ class ZlibConan(ConanFile):
         if self.options.minizip:
             self._build_minizip()
 
+    def conan_info(self): # https://github.com/conan-io/conan/issues/212
+        if self.settings.compiler == "gcc":  # or3 self.settings.os != "Windows" or the like
+            self.info.settings.build_type = None # Make gcc to be all Release packages linkable to Debug too
+
     @property
     def _use_autotools(self):
         if str(self.settings.os) in ["iOS", "watchOS", "tvOS"]:
             return False # use a cmake toolchain .... or, find out the special CHOST settings zlib requires, but ...
-        return self.settings.os == "Linux" or tools.is_apple_os(self.settings.os)
+        return False #[YM] We use CMake to override toolchain.
+                #self.settings.os == "Linux" or tools.is_apple_os(self.settings.os)
         # ... the  question is, why not always go with cmake and forget about the automake distaster?
         # this woulds simplify this recipe enorm
 
