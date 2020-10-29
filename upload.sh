@@ -12,11 +12,8 @@ PKG_USER=psl
 PKG_CHANNEL=dev
 
 PKG_NAME_FULL="$PKG_NAME/$PKG_VER@$PKG_USER/$PKG_CHANNEL"
-echo "Uplaoding package $PKG_NAME_FULL"
+echo "Uploading package $PKG_NAME_FULL"
 
-
-
-#conan remote add psl-conan  https://artifactory-cpp.dev.prismsl.net/api/conan/conan
 conan remote list
 
 for i in $(seq 1 3); do
