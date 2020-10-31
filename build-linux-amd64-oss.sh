@@ -4,11 +4,9 @@ set -xu
 
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-PKG_DIR=$ROOT_DIR/pkg
+TEST_BUILD_DIR=$ROOT_DIR/build
 
-[ -d $PKG_DIR ] && rm -Rf $PKG_DIR/* || mkdir -p $PKG_DIR
+[ -d $TEST_BUILD_DIR ] && rm -Rf $TEST_BUILD_DIR/* || mkdir -p $TEST_BUILD_DIR
 conan remote list
-pushd $PKG_DIR
-  conan create ../  psl/dev
-popd 
+conan create $ROOT_DIR   -tbf $TEST_BUILD_DIR
 
