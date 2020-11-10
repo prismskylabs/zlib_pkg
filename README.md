@@ -37,6 +37,7 @@ We mostly build under Linux and for that we create virtual VM using
 Vagrant every time. So that we have controllable clean environment.
 
 In order to create Linux VM do the following.
+
 Install Vagrant and VirtualBox.
 https://www.vagrantup.com/docs/installation
 
@@ -85,7 +86,6 @@ If you need to upload to your own server, you need to modify scripts to point
 to your server.
 
 ## Automatic build.
-
 This project has automatic build in TravisCI.
 Configuration for build can be found in 
 .travis.yml file in the root of the repo.
