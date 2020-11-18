@@ -10,6 +10,7 @@ TEST_BUILD_DIR=$ROOT_DIR/build
 conan remote list
 
 # Code in 'if' below is needed only if your lib has required dependencies.
+CONAN_USER_INFO=$(conan user -r psl-conan)
 if [ "$CONAN_USER_INFO" == "Current user of remote 'psl-conan' set to: 'None' (anonymous)" ]; then
     echo "Logging into psl-conan server."    
     echo "Please, enter psl-conan (artifactory-cpp) credentials when prompted"    
