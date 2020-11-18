@@ -28,8 +28,16 @@ If you want to use this source code for your own use, you need to have
 your own conan server. Basically, you will need to modify the code in your
 own fork/copy of this repo and submodule repos.
 
+# How to build
 
-# Create Vagrant VM
+Steps below describe major steps in order to build the project.
+
+## Create Vagrant VM
+We mostly build under Linux and for that we create virtual VM using 
+Vagrant every time. So that we have controllable clean environment.
+
+In order to create Linux VM do the following.
+
 Install Vagrant and VirtualBox.
 https://www.vagrantup.com/docs/installation
 
@@ -45,8 +53,9 @@ Run
 
 in order to login into created virtual machine.
 
-# Provision build environment
-Before provisioning environment, we need to set target platform.
+## Provision build environment
+Next step is to provision environment containing all tools needed for build.
+Before provisioning the environment, we need to set the target platform.
 It is set as env variable:
 
     export PKG_PLATFORM=linux-amd64
@@ -54,30 +63,29 @@ It is set as env variable:
 linux-amd64 is platform that will work in open source mode and will not require
 any private dependencies.
 Other possible platforms are possible and they are mostly private.
-For other platforms see edge_build_base project.
+For other platforms see edge_build_base internal project if you have access.
 Further provisioning is done as:
 
     cd <repo_root>/src/scripts
     ./provision.sh
 
-# Building package
+## Building package
 Building package is as strightforward as:
 
-    cd <repor_root>
+    cd <repo_root>
     ./build.sh
 
-#Upload package
-Uploading package is as strightforward as:
+## Upload package
+Uploading package to conan server is as strightforward as:
 
-    cd <repor_root>
+    cd <repo_root>
     ./upload.sh
 
-For upload to work you need to have a login with our internal conan server.
+In order for upload to work, you need to have a login with our internal conan server.
 If you need to upload to your own server, you need to modify scripts to point
 to your server.
 
-# Automatic build.
-
+## Automatic build.
 This project has automatic build in TravisCI.
 Configuration for build can be found in 
 .travis.yml file in the root of the repo.
