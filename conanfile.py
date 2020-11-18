@@ -42,10 +42,6 @@ class ZlibConan(ConanFile):
         if self.options.minizip:
             self._build_minizip()
 
-    def conan_info(self): # https://github.com/conan-io/conan/issues/212
-        if self.settings.compiler == "gcc" or self.settings.compiler == "clang":  # or3 self.settings.os != "Windows" or the like
-            self.info.settings.build_type = None # Make gcc to be all Release packages linkable to Debug too
-
     @property
     def _use_autotools(self):
         if str(self.settings.os) in ["iOS", "watchOS", "tvOS"]:
