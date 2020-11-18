@@ -42,7 +42,7 @@ class ZlibConan(ConanFile):
         if self.options.minizip:
             self._build_minizip()
 
-   @property
+    @property
     def _use_autotools(self):
         if str(self.settings.os) in ["iOS", "watchOS", "tvOS"]:
             return False # use a cmake toolchain .... or, find out the special CHOST settings zlib requires, but ...
