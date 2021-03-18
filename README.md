@@ -66,8 +66,15 @@ Other possible platforms are possible and they are mostly private.
 For other platforms see edge_build_base internal project if you have access.
 Further provisioning is done as:
 
-    cd <repo_root>/src/scripts
-    ./provision.sh
+    cd <repo_root>
+    src/scripts/provision.sh
+
+<repo_root> is root directory of the project.
+In case of zlib_pkg it is ~/zlib_pkg (inside vagrant VM).
+Since these instructions are also applicable to other projects,
+corresondent root directory of the project will be different for every project.
+How it is named is determined by vagrant VM Vagrantfile configuration and typically
+coincides or is similar to project name.
 
 ## Building package
 Building package is as strightforward as:
